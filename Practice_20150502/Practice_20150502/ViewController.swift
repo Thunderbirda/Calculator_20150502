@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     
 //    self.view.backgroundColor = UIColor.blackColor()
 
-    let label = makeLabelToAddView(187.5, y: 244 - 129, z: "0")
-    self.view.addSubview(label)
+    let myLabel = makeLabelToAddView(187.5, y: 244 - 129, z: "0")
+    self.view.addSubview(myLabel)
 
 //    let button0 = makeButtonToAddView0(187.5, y: 244 - 129, z: "0")
 //    self.view.addSubview(button0)
