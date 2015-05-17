@@ -243,22 +243,42 @@ class ViewController: UIViewController {
         
     }
     
+//課題
+//- ２桁の入力方法
+//- "+"のとき何故か直後にログにO
+//- 場合分けの方法（数字＋"."、各記号？）
+//- if (0~9, .) else if (+) else if (-) else if (×) else if (÷) else if (+/-) else if (%) else if (=)
+    
     func tapped(button: UIButton) {
         NSLog("%@", button.titleLabel!.text!)
+        if (button.titleLabel!.text! == "1" || button.titleLabel!.text! == "2" || button.titleLabel!.text! == "3" || button.titleLabel!.text! == "4" || button.titleLabel!.text! == "5" || button.titleLabel!.text! == "6" || button.titleLabel!.text! == "7" || button.titleLabel!.text! == "8" || button.titleLabel!.text! == "9") {
         myLabel?.text? = button.titleLabel!.text!
-//        if (button.titleLabel!.text! == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" ) {
-//        myLabel?.text? = button.titleLabel!.text!
-//        } else
-    if (button.titleLabel!.text! == "AC") {
-            myLabel?.text? = ""
-        } else if (button.titleLabel!.text! == "+"){
-            number = (myLabel!.text! as NSString).integerValue
-            NSLog("%d", number)
-            myLabel?.text? = ""
-        } else {
-        }
+        number = (myLabel!.text! as NSString).integerValue
+        NSLog("%d", number)
+    } else if (button.titleLabel!.text! == "0") {
+        myLabel?.text? = button.titleLabel!.text!
+    } else if (button.titleLabel!.text! == ".") {
+        myLabel?.text? = button.titleLabel!.text!
+    } else if (button.titleLabel!.text! == "AC") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "+/-") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "%") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "÷"){
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "−") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "×") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "+") {
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "=") {
+//        number = (myLabel!.text! as NSSTring).integerValue
+        myLabel?.text? = ""
     }
-    
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
