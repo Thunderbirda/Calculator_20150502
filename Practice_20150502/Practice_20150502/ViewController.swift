@@ -245,16 +245,17 @@ class ViewController: UIViewController {
     
     func tapped(button: UIButton) {
         NSLog("%@", button.titleLabel!.text!)
-        if (button.titleLabel!.text! == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" ) {
         myLabel?.text? = button.titleLabel!.text!
-        } else if (button.titleLabel!.text! == "AC") {
+//        if (button.titleLabel!.text! == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" ) {
+//        myLabel?.text? = button.titleLabel!.text!
+//        } else
+    if (button.titleLabel!.text! == "AC") {
             myLabel?.text? = ""
-        } else if (button.titleLabel!.text! == "%"){
+        } else if (button.titleLabel!.text! == "+"){
             number = (myLabel!.text! as NSString).integerValue
             NSLog("%d", number)
             myLabel?.text? = ""
         } else {
-        }
         }
     }
     
