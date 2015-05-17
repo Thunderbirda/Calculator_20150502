@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     var myLabel:UILabel?
     var number: Int = 1
+    var operate: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
     let button14 = makeButtonToAddView(47 + 94, y: 244 + 94 * 3, title: "2")
     let button15 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94 * 3, title: "3")
     let button16 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94 * 3, title: "+")
-    let button19 = makeButtonToAddView3(94, y: 244 + 94 * 4, title: "0")
+    let button19 = makeButtonToAddView3(94 , y: 244 + 94 * 4, title: "0")
     let button17 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94 * 4, title: ".")
     let button18 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94 * 4, title: "=")
 
@@ -226,7 +227,7 @@ class ViewController: UIViewController {
         //        //タップした状態の色
         //        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
         //サイズ
-        button.frame = CGRectMake(0, 0, 93 * 2, 93)
+        button.frame = CGRectMake(0, 0, 93 * 2 + 1, 93)
         //配置場所
         button.layer.position = CGPoint(x: x, y: y)
         //        button.layer.position = CGPoint(x: self.view.frame.width/2, y: y)
@@ -244,39 +245,57 @@ class ViewController: UIViewController {
     }
     
 //課題
-//- ２桁の入力方法
-//- "+"のとき何故か直後にログにO
-//- 場合分けの方法（数字＋"."、各記号？）
-//- if (0~9, .) else if (+) else if (-) else if (×) else if (÷) else if (+/-) else if (%) else if (=)
+//小数点以下（計算）
     
     func tapped(button: UIButton) {
         NSLog("%@", button.titleLabel!.text!)
-        if (button.titleLabel!.text! == "1" || button.titleLabel!.text! == "2" || button.titleLabel!.text! == "3" || button.titleLabel!.text! == "4" || button.titleLabel!.text! == "5" || button.titleLabel!.text! == "6" || button.titleLabel!.text! == "7" || button.titleLabel!.text! == "8" || button.titleLabel!.text! == "9") {
-        myLabel?.text? = button.titleLabel!.text!
-        number = (myLabel!.text! as NSString).integerValue
-        NSLog("%d", number)
-    } else if (button.titleLabel!.text! == "0") {
-        myLabel?.text? = button.titleLabel!.text!
-    } else if (button.titleLabel!.text! == ".") {
-        myLabel?.text? = button.titleLabel!.text!
-    } else if (button.titleLabel!.text! == "AC") {
+    if (button.titleLabel!.text! == "AC") {
         myLabel?.text? = ""
-    } else if (button.titleLabel!.text! == "+/-") {
-        myLabel?.text? = ""
-    } else if (button.titleLabel!.text! == "%") {
-        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "+/-"){
+        let number2 = (myLabel!.text! as NSString).integerValue
+        let oppResult = number2 * -1
+        myLabel?.text? = String(format: "%d", oppResult)
+//    } else if (button.titleLabel!.text! == "%"){
+//        let number2 = (myLabel!.text! as NSString).floatValue
+//        let percentResult = number2 * 0.01
+//        myLabel?.text? = String(format: "%10.2f", percentResult)
     } else if (button.titleLabel!.text! == "÷"){
-        myLabel?.text? = ""
-    } else if (button.titleLabel!.text! == "−") {
+        operate = "/"
+        number = (myLabel!.text! as NSString).integerValue
         myLabel?.text? = ""
     } else if (button.titleLabel!.text! == "×") {
+        operate = "×"
+        number = (myLabel!.text! as NSString).integerValue
+        myLabel?.text? = ""
+    } else if (button.titleLabel!.text! == "−") {
+        operate = "-"
+        number = (myLabel!.text! as NSString).integerValue
         myLabel?.text? = ""
     } else if (button.titleLabel!.text! == "+") {
+        operate = "+"
+        number = (myLabel!.text! as NSString).integerValue
         myLabel?.text? = ""
     } else if (button.titleLabel!.text! == "=") {
-//        number = (myLabel!.text! as NSSTring).integerValue
-        myLabel?.text? = ""
-    }
+        let number2 = (myLabel!.text! as NSString).integerValue
+            if (operate == "+"){ let result = number + number2
+                myLabel?.text? = String(format: "%d", result)
+                NSLog("%d", result)
+                NSLog("result=%d, number=%d, number2=%d", result, number, number2)}
+            else if (operate == "-"){ let result = number - number2
+                myLabel?.text? = String(format: "%d", result)
+                NSLog("%d", result)
+                NSLog("result=%d, number=%d, number2=%d", result, number, number2)}
+            else if (operate == "×"){ let result = number * number2
+                myLabel?.text? = String(format: "%d", result)
+                NSLog("%d", result)
+                NSLog("result=%d, number=%d, number2=%d", result, number, number2)}
+            else if (operate == "/"){ let result = number / number2
+                myLabel?.text? = String(format: "%d", result)
+                NSLog("%d", result)
+                NSLog("result=%d, number=%d, number2=%d", result, number, number2)}
+            else {}
+        }
+    else { myLabel?.text? += button.titleLabel!.text! }
     }
 
     override func didReceiveMemoryWarning() {
