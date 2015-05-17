@@ -10,36 +10,39 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var myLabel:UILabel?
+    var number: Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
 //    self.view.backgroundColor = UIColor.blackColor()
 
-    let myLabel = makeLabelToAddView(187.5, y: 244 - 129, z: "0")
-    self.view.addSubview(myLabel)
+    myLabel = makeLabelToAddView(187.5, y: 244 - 129)
+    self.view.addSubview(myLabel!)
 
 //    let button0 = makeButtonToAddView0(187.5, y: 244 - 129, z: "0")
 //    self.view.addSubview(button0)
         
-    let button1 = makeButtonToAddView1(47, y: 244, z: "AC")
-    let button2 = makeButtonToAddView1(47 + 94, y: 244, z: "+/-")
-    let button3 = makeButtonToAddView1(47 + 94 + 94, y: 244, z: "%")
-    let button4 = makeButtonToAddView2(47 + 94 + 94 + 94, y: 244, z: "÷")
-    let button5 = makeButtonToAddView(47, y: 244 + 94, z: "7")
-    let button6 = makeButtonToAddView(47 + 94, y: 244 + 94, z: "8")
-    let button7 = makeButtonToAddView(47 + 94 + 94, y: 244 + 94, z: "9")
-    let button8 = makeButtonToAddView2(47 + 94 + 94 + 94, y: 244 + 94, z: "×")
-    let button9 = makeButtonToAddView(47, y: 244 + 94 + 94, z: "4")
-    let button10 = makeButtonToAddView(47 + 94, y: 244 + 94 + 94, z: "5")
-    let button11 = makeButtonToAddView(47 + 94 + 94, y: 244 + 94 + 94, z: "6")
-    let button12 = makeButtonToAddView2(47 + 94 + 94 + 94, y: 244 + 94 + 94, z: "−")
-    let button13 = makeButtonToAddView(47, y: 244 + 94 + 94 + 94, z: "1")
-    let button14 = makeButtonToAddView(47 + 94, y: 244 + 94 + 94 + 94, z: "2")
-    let button15 = makeButtonToAddView(47 + 94 + 94, y: 244 + 94 + 94 + 94, z: "3")
-    let button16 = makeButtonToAddView2(47 + 94 + 94 + 94, y: 244 + 94 + 94 + 94, z: "+")
-    let button19 = makeButtonToAddView3(94, y: 244 + 94 + 94 + 94 + 94, z: "0")
-    let button17 = makeButtonToAddView(47 + 94 + 94, y: 244 + 94 + 94 + 94 + 94, z: ".")
-    let button18 = makeButtonToAddView2(47 + 94 + 94 + 94, y: 244 + 94 + 94 + 94 + 94, z: "=")
+    let button1 = makeButtonToAddView1(47, y: 244, title: "AC")
+    let button2 = makeButtonToAddView1(47 + 94, y: 244, title: "+/-")
+    let button3 = makeButtonToAddView1(47 + 94 * 2, y: 244, title: "%")
+    let button4 = makeButtonToAddView2(47 + 94 * 3, y: 244, title: "÷")
+    let button5 = makeButtonToAddView(47, y: 244 + 94, title: "7")
+    let button6 = makeButtonToAddView(47 + 94, y: 244 + 94, title: "8")
+    let button7 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94, title: "9")
+    let button8 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94, title: "×")
+    let button9 = makeButtonToAddView(47, y: 244 + 94 * 2, title: "4")
+    let button10 = makeButtonToAddView(47 + 94, y: 244 + 94 * 2, title: "5")
+    let button11 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94 * 2, title: "6")
+    let button12 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94 * 2, title: "−")
+    let button13 = makeButtonToAddView(47, y: 244 + 94 * 3, title: "1")
+    let button14 = makeButtonToAddView(47 + 94, y: 244 + 94 * 3, title: "2")
+    let button15 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94 * 3, title: "3")
+    let button16 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94 * 3, title: "+")
+    let button19 = makeButtonToAddView3(94, y: 244 + 94 * 4, title: "0")
+    let button17 = makeButtonToAddView(47 + 94 * 2, y: 244 + 94 * 4, title: ".")
+    let button18 = makeButtonToAddView2(47 + 94 * 3, y: 244 + 94 * 4, title: "=")
 
     self.view.addSubview(button1)
     self.view.addSubview(button2)
@@ -62,8 +65,9 @@ class ViewController: UIViewController {
     self.view.addSubview(button19)
 
     }
-
-    func makeLabelToAddView(x:CGFloat, y:CGFloat, z:String) -> UILabel {
+    
+//    func makeLabelToAddView(x:CGFloat, y:CGFloat) -> UILabel {
+    func makeLabelToAddView(x:CGFloat, y:CGFloat) -> UILabel {
         
         // Labelを作成.
         let myLabel: UILabel = UILabel(frame: CGRectMake(0,0,373,163))
@@ -74,7 +78,7 @@ class ViewController: UIViewController {
         // コーナーの半径.
         myLabel.layer.cornerRadius = 0
         // Labelに文字を代入.
-        myLabel.text = "0"
+        myLabel.text = ""
         myLabel.font = UIFont(name: "Helvetica", size: 50)
         // 文字の色を白にする.
         myLabel.textColor = UIColor.whiteColor()
@@ -89,11 +93,11 @@ class ViewController: UIViewController {
 
     }
     
-//    func makeButtonToAddView0(x:CGFloat, y:CGFloat, z:String) -> UIButton {
+//    func makeButtonToAddView0(x:CGFloat, y:CGFloat, title:String) -> UIButton {
 //        
 //        let button = UIButton()
 //        //表示されるテキスト
-//        button.setTitle(z, forState: .Normal)
+//        button.setTitle(title, forState: .Normal)
 //        button.titleLabel!.font = UIFont(name: "Helvetica", size: 50)
 //        //テキストの色
 //        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -119,16 +123,16 @@ class ViewController: UIViewController {
 //        
 //    }
     
-    func makeButtonToAddView(x:CGFloat, y:CGFloat, z:String) -> UIButton {
+    func makeButtonToAddView(x:CGFloat, y:CGFloat, title:String) -> UIButton {
         
         let button = UIButton()
         //表示されるテキスト
-        button.setTitle(z, forState: .Normal)
+        button.setTitle(title, forState: .Normal)
         button.titleLabel!.font = UIFont(name: "Helvetica", size: 35)
         //テキストの色
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //タップした状態のテキスト
-        button.setTitle("😀", forState: .Highlighted)
+//        button.setTitle("😀", forState: .Highlighted)
 //        //タップした状態の色
 //        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
         //サイズ
@@ -149,16 +153,16 @@ class ViewController: UIViewController {
         
     }
 
-    func makeButtonToAddView1(x:CGFloat, y:CGFloat, z:String) -> UIButton {
+    func makeButtonToAddView1(x:CGFloat, y:CGFloat, title:String) -> UIButton {
         
         let button = UIButton()
         //表示されるテキスト
-        button.setTitle(z, forState: .Normal)
+        button.setTitle(title, forState: .Normal)
         button.titleLabel!.font = UIFont(name: "Helvetica", size: 35)
         //テキストの色
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //タップした状態のテキスト
-        button.setTitle("😁", forState: .Highlighted)
+//        button.setTitle("😁", forState: .Highlighted)
         //        //タップした状態の色
         //        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
         //サイズ
@@ -179,16 +183,16 @@ class ViewController: UIViewController {
         
     }
 
-    func makeButtonToAddView2(x:CGFloat, y:CGFloat, z:String) -> UIButton {
+    func makeButtonToAddView2(x:CGFloat, y:CGFloat, title:String) -> UIButton {
         
         let button = UIButton()
         //表示されるテキスト
-        button.setTitle(z, forState: .Normal)
+        button.setTitle(title, forState: .Normal)
         button.titleLabel!.font = UIFont(name: "Helvetica", size: 40)
         //テキストの色
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         //タップした状態のテキスト
-        button.setTitle("😍", forState: .Highlighted)
+//        button.setTitle("😍", forState: .Highlighted)
         //        //タップした状態の色
         //        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
         //サイズ
@@ -209,20 +213,20 @@ class ViewController: UIViewController {
         
     }
 
-    func makeButtonToAddView3(x:CGFloat, y:CGFloat, z:String) -> UIButton {
+    func makeButtonToAddView3(x:CGFloat, y:CGFloat, title:String) -> UIButton {
         
         let button = UIButton()
         //表示されるテキスト
-        button.setTitle(z, forState: .Normal)
+        button.setTitle(title, forState: .Normal)
         button.titleLabel!.font = UIFont(name: "Helvetica", size: 35)
         //テキストの色
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         //タップした状態のテキスト
-        button.setTitle("😡", forState: .Highlighted)
+//        button.setTitle("😡", forState: .Highlighted)
         //        //タップした状態の色
         //        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
         //サイズ
-        button.frame = CGRectMake(0, 0, 93 * 2 + 1, 93)
+        button.frame = CGRectMake(0, 0, 93 * 2, 93)
         //配置場所
         button.layer.position = CGPoint(x: x, y: y)
         //        button.layer.position = CGPoint(x: self.view.frame.width/2, y: y)
@@ -240,7 +244,18 @@ class ViewController: UIViewController {
     }
     
     func tapped(button: UIButton) {
-        NSLog("tapped")
+        NSLog("%@", button.titleLabel!.text!)
+        if (button.titleLabel!.text! == "1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" ) {
+        myLabel?.text? = button.titleLabel!.text!
+        } else if (button.titleLabel!.text! == "AC") {
+            myLabel?.text? = ""
+        } else if (button.titleLabel!.text! == "%"){
+            number = (myLabel!.text! as NSString).integerValue
+            NSLog("%d", number)
+            myLabel?.text? = ""
+        } else {
+        }
+        }
     }
     
     override func didReceiveMemoryWarning() {
